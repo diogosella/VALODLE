@@ -1,0 +1,65 @@
+
+@font-face {
+    font-family: 'GothamBold';
+    src: url(assets/fonts/GothamBold.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url(assets/fonts/GothamBook.ttf) format('truetype');
+}
+
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gotham';
+}
+
+/* Background */
+
+body {
+    background-image: url(/assets/images/background/background_img.png);
+    background-size: cover;
+}
+/* Logo */
+
+.logoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.logoContainer img {
+    width: 30%;
+}
+
+.logoSubtitle {
+    margin-top: 8px;
+    font-size: 24px;
+    font-family: 'GothamBold';
+    color: #fff;
+}
+
+/* Gamemodes */
+
+.gamemodesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.gamemodesContainer button {
+    width: 40%;
+    height: 82px;
+    margin-bottom: 16px;
+    border: 2px solid #BA3A46;
+    color: #BA3A46  ;
+    background: none;
+    text-align: left;
+}
