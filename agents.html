@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Guess the agent!</title>
+</head>
+<body>
+
+    <div class="mainInput">
+        <input type="text" id="agentInput" placeholder="Insira um agente">
+        <button type="button">></button>
+    </div>
+
+<div class="cards">
+    <div class="agentCard" id="hidden" data-agent="jett">
+        <img src="assets/images/agent-images/jett.webp" alt="">
+        <span>Jett</span>
+    </div>
+        <div class="agentCard" id="hidden"  data-agent="sage">
+        <img src="assets/images/agent-images/sage.webp" alt="">
+        <span>Sage</span>
+    </div>
+        <div class="agentCard" id="hidden"  data-agent="phoenix">
+        <img src="assets/images/agent-images/phoenix.webp" alt="">
+        <span>Phoenix</span>
+    </div>
+        <div class="agentCard" id="hidden"  data-agent="skye">
+        <img src="assets/images/agent-images/skye.webp" alt="">
+        <span>Skye</span>
+    </div>
+</div>
+
+    <div class="guessingHistory">
+    <table>
+            <tr class="guessingTitles">
+                <th>AGENTE</th>
+                <th>GÊNERO</th>
+                <th>FUNÇÃO</th>
+                <th>ANO</th>
+            </tr>
+            <tr class="guessingItems">
+                <td>Jett</td>
+                <td>Female</td>
+                <td>Duelist</td>
+                <td>2020</td>
+            </tr>
+    </table>
+    </div>
+
+        <footer>VALODLE | This project is <span class="boldTextSpan">not sponsored nor affiliated with Riot Games</span> | 2025</footer>
+
+
+    <script src="scripts/agentsGame/InputDropdown.js"></script>
+</body>
+</html>
