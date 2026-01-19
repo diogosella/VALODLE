@@ -9,14 +9,14 @@
 <body>
 
     <div class="mainInput">
-        <input type="text" id="agentInput" placeholder="Insira um agente">
-        <button type="button">></button>
+        <form>
+            <input type="text" id="agentInput" name="search" placeholder="Insira um agente">
+            <button id="submit-button">></button>
+        </form>
     </div>
 
 <div class="cards">
-    <div class="agentCard" id="hidden" data-agent="jett">
-        <img src="assets/images/agent-images/jett.webp" alt="">
-        <span>Jett</span>
+    <div class="agentCard">
     </div>
 
 
@@ -25,26 +25,21 @@
 </div>
 
     <div class="guessingHistory">
-    <table>
-            <tr class="guessingTitles">
-                <th>AGENTE</th>
-                <th>GÊNERO</th>
-                <th>FUNÇÃO</th>
-                <th>ANO</th>
-            </tr>
-            <tr class="guessingItems">
-                <td>Jett</td>
-                <td>Female</td>
-                <td>Duelist</td>
-                <td>2020</td>
-            </tr>
-    </table>
+            <table>
+                    <tr>
+                        <th>AGENTE</th>
+                        <th>GÊNERO</th>
+                        <th>FUNÇÃO</th>
+                        <th>ANO</th>
+                    </tr>
+                <tbody id="guessing-line" class="guessingLine"></tbody>
+            </table>
     </div>
 
         <footer>VALODLE | This project is <span class="boldTextSpan">not sponsored nor affiliated with Riot Games</span> | 2025</footer>
 
 
     <script src="scripts/agentsGame/InputDropdown.js"></script>
-    <script src="scripts/agentsGame/addAgents.js"></script>
+    <script src="scripts/agentsGame/HistoryTable.js"></script>
 </body>
 </html>
