@@ -9,6 +9,8 @@ const role = document.querySelector("#guessing-role")
 const year = document.querySelector("#guessing-year")
 
 
+let chosenAgents = []
+
 button.addEventListener('click', async(event) => {
     event.preventDefault();
     
@@ -25,12 +27,17 @@ button.addEventListener('click', async(event) => {
     
     const data = await response.json();
     const agent = data[0];
+
     console.log(data);
 
         if (data.length === 0) {
-        alert("Agente não encontrado");
         return;
     }
+
+        if (chosenAgents.includes(agent.agentname)) {
+            return;
+        }
+
 
     let agentsex = agent.agentsex;
     
@@ -51,6 +58,7 @@ button.addEventListener('click', async(event) => {
         `
     
         line.appendChild(guess);
-        console.log("clicou");
+        chosenAgents.push(chosenAgent);
+        console.log(chosenAgents)
 })
 
