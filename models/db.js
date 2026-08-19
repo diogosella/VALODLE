@@ -1,22 +1,25 @@
-const { Sequelize } = require("sequelize");
+import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(
-    "agents",
-    "root",
-    "sqlpass",
+    "valodle",
+    "postgres",
+    "pgpassword",
     {
-        host: "localhost",
-        dialect: "mysql"
+        host: "127.0.0.1",
+        port: 5432,
+        dialect: "postgres"
     }
 );
 
-sequelize.authenticate().then((function() {
-    console.log("deu bom");
-})).catch(function(erro) {
-    console.log("nao deu bom: " + erro);
-})
+sequelize.authenticate()
+    .then(() => {
+        console.log("Conectado ao PostgreSQL");
+    })
+    .catch((error) => {
+        console.error("Erro ao conectar ao PostgreSQL:", error);
+    });
 
-module.exports = {
-    Sequelize: Sequelize,
-    sequelize: sequelize
-}
+export default {
+    Sequelize,
+    sequelize
+};

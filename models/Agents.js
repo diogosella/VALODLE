@@ -21,6 +21,8 @@ const Agents = db.sequelize.define("agents", {
     agenticon: {
         type: db.Sequelize.STRING,
     }
+}, {
+    timestamps: false
 });
 
 Agents.sync({force:false});

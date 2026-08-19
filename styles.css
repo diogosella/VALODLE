@@ -122,38 +122,46 @@ footer {
 
  /* Input */
 
- .mainInput, form {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
- }
-
  form {
     width: 100%;
  }
 
- .mainInput input {
-    width: 30%;
-    display: flex;
-    align-items: center;
-    padding: 10px 10px;
-    margin-top: 15%;
-    text-align: left;
-    border: none;
-    outline: none;
+ input {
+    width: 80%;
+    margin-left: 16px;
     font-size: 24px;
-    font-family: 'Gotham';
  }
 
- .mainInput button {
-    display: flex;
-    width: 1.6%;
-    align-items: center;
-    margin-top: 15%;
+ button {
+    background-color: #BA3A46;
+    margin: 4px;
+    width: 58px;
+    border-radius: 0;
     border: none;
+ }
+
+ button:hover {
+    cursor: pointer;
+ }
+
+ 
+input, input:focus, input:focus-visible {
     outline: none;
-    font-size: 24px;
-    font-family: 'Gotham';
+    outline-offset: 2px;
+    border: none;
+}
+
+ .mainInput {
+    display: flex;
+    margin: 10% auto 0 auto;
+    width: 40%;
+    height: 64px;
+    background-color: white;
+}
+
+ .mainInput form {
+    display: flex;
+    justify-content: space-between;
  }
 
    /* Guessing Options */

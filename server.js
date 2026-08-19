@@ -16,7 +16,7 @@ app.get("/agents", async (req, res) => {
     const agentList = await agents.findAll({
       where: {
         agentname: {
-          [Op.like]: `%${searchInput}%`
+          [Op.iLike]: `${searchInput}%`
         }
       }
     });
