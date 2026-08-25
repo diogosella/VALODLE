@@ -7,13 +7,17 @@
     <title>Guess the agent!</title>
 </head>
 <body>
+<div class="container">
 
+    <div class="fallbackButton">
+        <a href="/index.html">Voltar ao início</a>
+    </div>
+
+    <div class="resultText"></div>
     <div class="mainInput">
         <form>
-            <!-- <div class="inputContainer"> -->
             <input type="text" id="agentInput" name="search" placeholder="Insira um agente">
             <button id="submit-button">></button>
-            <!-- </div> -->
         </form>
     </div>
     
@@ -38,10 +42,19 @@
             </table>
     </div>
 
-        <footer>VALODLE | This project is <span class="boldTextSpan">not sponsored nor affiliated with Riot Games</span> | 2025</footer>
+    <div class="footerContainer">
+        <footer>
+            <div class="footerText">
+                <p class="footerGithub"><b>Dev:</b> https://github.com/diogosella</p>
+                <p class="footerDisclamer">This is a personal project, not affiliated with Riot Games</p>
+            </div>
+        </footer>
+    </div>
 
-
+    <script src="scripts/agentsGame/GameState.js"></script>
     <script src="scripts/agentsGame/InputDropdown.js"></script>
+    <script src="scripts/agentsGame/BaseAgent.js"></script>
     <script src="scripts/agentsGame/HistoryTable.js"></script>
+</div>
 </body>
 </html>

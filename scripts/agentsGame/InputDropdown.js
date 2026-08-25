@@ -1,5 +1,6 @@
 const input = document.querySelector("#agentInput");
 const cardList = document.querySelector(".cards");
+const submitButton = document.querySelector("#submit-button")
 
 input.addEventListener("input", async () => {
     const value = input.value.trim();
@@ -18,9 +19,18 @@ input.addEventListener("input", async () => {
 
     cardList.innerHTML = "";
 
-    data.forEach(agent => {
+    const availableAgents = data.filter(agent => {
+        const normalizedName = agent.agentname.trim().toLowerCase();
+
+        return !window.gameState.chosenAgents.has(normalizedName);
+    });
+
+    availableAgents.forEach(agent => {
         const card = document.createElement("div");
+        const normalizedName = agent.agentname.trim().toLowerCase();
+
         card.classList.add("agentCard");
+        card.dataset.agentName = normalizedName;
 
         card.innerHTML = `
             <img src="assets/images/agent-images/${agent.agenticon}">
@@ -30,6 +40,7 @@ input.addEventListener("input", async () => {
         card.addEventListener("click", () => {
             input.value = agent.agentname;
             cardList.innerHTML = "";
+            submitButton.click();
         });
 
         cardList.appendChild(card);

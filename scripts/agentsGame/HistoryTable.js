@@ -1,24 +1,22 @@
-
 const searchbar = document.querySelector("#agentInput");
 const button = document.querySelector("#submit-button")
 const line = document.querySelector("#guessing-line")
 
-const name = document.querySelector("#guessing-name")
-const sex = document.querySelector("#guessing-sex")
-const role = document.querySelector("#guessing-role")
-const year = document.querySelector("#guessing-year")
-
-
-let chosenAgents = []
+let missCount = 1;  
 
 button.addEventListener('click', async(event) => {
     event.preventDefault();
     
+    const chosenAgent = searchbar.value.trim();
+
+        if (!chosenAgent) {
+            return;
+        }
     
-  const chosenAgent = searchbar.value.trim();
-  
-  if (searchbar.value == "") {
-      return 0;
+    const baseAgent = await window.baseAgentPromise;
+
+    if (!baseAgent) {
+        return;
     }
     
     const response = await fetch(
@@ -26,39 +24,77 @@ button.addEventListener('click', async(event) => {
     );
     
     const data = await response.json();
-    const agent = data[0];
+    
+    if (data.length === 0) {
+        return;
+    }
+    
+    const normalizedChosenAgent = chosenAgent.toLowerCase();
 
-    console.log(data);
+    const agent = data.find(currentAgent => {
+        const normalizedName = currentAgent.agentname.trim().toLowerCase();
 
-        if (data.length === 0) {
+        return !window.gameState.chosenAgents.has(normalizedName);
+    });
+
+    if (!agent) {
+        return;
+    }
+    
+    const normalizedAgent = agent.agentname.trim().toLowerCase();
+
+    if (window.gameState.chosenAgents.has(normalizedAgent)) {
         return;
     }
 
-        if (chosenAgents.includes(agent.agentname)) {
-            return;
-        }
 
+    const agentsex = agent.agentsex;
 
-    let agentsex = agent.agentsex;
-    
-    if (agent.agentsex === "male") {
-        agentsex = "Masculino";
-    } else if (agent.agentsex === "female") {
-        agentsex = "Feminino"
+        const isCorrect = agent.agentid === baseAgent.agentid;
+        const sameSex = agent.agentsex === baseAgent.agentsex;
+        const sameRole = agent.agentrole === baseAgent.agentrole;
+        const sameYear = agent.agentyear === baseAgent.agentyear;
+
+        if (isCorrect) {
+        const resultMessage = document.querySelector(".resultText");
+        const mainInput = document.querySelector(".mainInput");
+            resultMessage.innerHTML = `
+                <img class="resultPic" src="${agent.agenticon}">
+                <h1 class="resultTitle">Você acertou!</h1>
+                <p class="resultSubtitle">Você descobriu ${agent.agentname} em ${missCount} tentativas!</p>
+                
+            `;
+        searchbar.remove();
+        mainInput.remove();
     } else {
-        agentsex = "Outro" };
+        missCount++;
+    }
 
 
         const guess = document.createElement("tr");
         guess.innerHTML = `
-            <td>${agent.agentname}</td>
-            <td>${agentsex}</td>
-            <td>${agent.agentrole}</td>
-            <td>${agent.agentyear}</td>
+            <td class="${isCorrect ? "correct" : "wrong"}">
+            ${agent.agentname}</td>
+
+            <td class="${sameSex ? "correct" : "wrong"}">
+            ${agentsex}</td>
+
+            <td class="${sameRole ? "correct" : "wrong"}">
+            ${agent.agentrole}</td>
+
+            <td class="${sameYear ? "correct" : "wrong"}">
+            ${agent.agentyear}</td>
         `
     
         line.appendChild(guess);
-        chosenAgents.push(chosenAgent);
-        console.log(chosenAgents)
-})
+        window.gameState.chosenAgents.add(normalizedAgent);
+        
+        document.querySelectorAll(".agentCard").forEach(card => {
+            if (card.dataset.agentName === normalizedAgent) {
+                card.remove();
+            }
+        });
+        document.querySelector(".cards").innerHTML = "";
+        searchbar.value = "";
+});
 

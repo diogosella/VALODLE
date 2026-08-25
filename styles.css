@@ -24,7 +24,6 @@
 }
 
 
-
 /* Reset */
 
 * {
@@ -38,6 +37,14 @@
 body {
     background-image: url(/assets/images/background/background_img.png);
     background-size: cover;
+}
+
+/* Main container */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Logos */
@@ -102,21 +109,26 @@ body {
 }
 
 
-footer {
-    position: absolute;
-    width: 100%;
-    height: 52px;
-    padding-top: 12px;
-    bottom: 0;
-    text-align: center;
-    background-color: #BA3A46;
-    font-family: "TungstenNarrowMedium";
-    font-size: 24px;
+/* Fallback button */
+
+.fallbackButton {
+    margin: 2% 0 0 2%;
 }
 
- footer .boldTextSpan {
-    font-family: "TungstenNarrowBold";
- }
+.fallbackButton a {
+    background: #ba3a4774;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+
+    transition: 0.2s;
+}
+
+.fallbackButton a:hover {
+    background-color: #BA3A46;
+}
+
 
  /* AGENTS GAME ===================================================*/
 
@@ -220,11 +232,51 @@ td {
     background: red;
 }
 
+.correct {
+    background-color: lime;
+}
+
 .guessingLine {
     width: 100%;
     align-items: center;
     justify-content: center;
 }
 
+/* Result Message */
+
+.resultText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8%;
+}
 
 
+.resultTitle {
+    color: white;
+    margin-bottom: 0.5%;
+}
+
+.resultSubtitle {
+    color: rgba(255, 255, 255, 0.653);
+}
+
+.resultPic {
+    margin-bottom: 1%;
+}
+
+/* Footer */
+
+.footerContainer {
+    background-color: #111823;
+    margin-top: auto;
+    padding: 4px;
+}
+
+.footerText {
+    color: white;
+    margin: 1% 5%;
+    display: flex;
+    justify-content: space-between;
+}

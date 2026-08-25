@@ -1,0 +1,11 @@
+- Fix background weird scrolling
+ 
+- Apply animations to history popping
+
+- Apply animations to result div texts
+
+- Change sending button icon
+
+- Apply agent icons images
+
+- Check if the agents are being picked in index order
